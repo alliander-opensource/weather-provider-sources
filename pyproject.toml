@@ -1,0 +1,114 @@
+[tool.poetry]
+name = "weather-provider-sources"
+version = "0.8.0"
+description = "Weather Provider Sources"
+authors = ["Raoul Linnenbank <58594297+rflinnenbank@users.noreply.github.com>"]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = ">=3.11, <3.13"
+# Initial placeholder value to allow for easy adjustments to the libraries component as needed. TODO: Fix before release
+weather-provider-libraries = {path = "../weather-provider-libraries", develop = true}
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+sphinx = "^7.3.7"
+coverage = "^7.4.4"
+ruff = "^0.4.1"
+myst-parser = "^2.0.0"
+black = "^24.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint."FORMAT"]
+max-line-length = 120
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.paths]
+source = ["weather_provider_libraries"]
+
+[tool.coverage.html]
+directory = "docs/coverage_html_report"
+
+[tool.black]
+line-length = 120
+target-version = ["py311", "py312"]
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py311"
+output-format = "github"
+show-fixes = true
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "migrations"
+]
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # pydocstyle
+    "D",
+]
+ignore = [
+    # Missing docstring in public module
+    "D100",
+    # Missing docstring in public package
+    "D104",
+    #  `one-blank-line-before-class` (D203) and `no-blank-line-before-class` (D211) are incompatible. Ignoring `one-blank-line-before-class`.
+    "D203",
+    # `multi-line-summary-first-line` (D212) and `multi-line-summary-second-line` (D213) are incompatible. Ignoring `multi-line-summary-second-line`.
+    "D213",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
