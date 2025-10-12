@@ -1,25 +1,29 @@
 [tool.poetry]
-name = "weather-provider-sources"
+name = "meteoforge-sources"
 version = "0.8.0"
-description = "Weather Provider Sources"
+description = "MeteoForge Sources"
 authors = ["Raoul Linnenbank <58594297+rflinnenbank@users.noreply.github.com>"]
 readme = "README.rst"
 
 [tool.poetry.dependencies]
-python = ">=3.11, <3.13"
+python = ">=3.13, <4.0"
 # Initial placeholder value to allow for easy adjustments to the libraries component as needed. TODO: Fix before release
-weather-provider-libraries = {path = "../weather-provider-libraries", develop = true}
+meteoforge = {path = "../meteoforge", develop = true}
 
 [tool.poetry.group.dev]
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.1.1"
-sphinx = "^7.3.7"
-coverage = "^7.4.4"
-ruff = "^0.4.1"
-myst-parser = "^2.0.0"
-black = "^24.4.0"
+coverage = "^7.9.2"
+mkdocs = "^1.6.1"
+mkdocs-material = "^9.6.15"
+mkdocstrings = { extras = ["python"], version = "^0.29.1" }
+mypy = "^1.17.0"
+pre-commit = "^4.2.0"
+pytest = "^8.4.1"
+ruff = "^0.12.4"
+types-pyyaml = "^6.0.12.20250516"
+fawltydeps = "^0.20.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -37,7 +41,7 @@ testpaths = [
 branch = true
 
 [tool.coverage.paths]
-source = ["weather_provider_libraries"]
+source = ["meteoforge_sources/*"]
 
 [tool.coverage.html]
 directory = "docs/coverage_html_report"
