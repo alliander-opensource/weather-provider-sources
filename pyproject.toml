@@ -15,15 +15,13 @@ optional = true
 
 [tool.poetry.group.dev.dependencies]
 coverage = "7.13.5"
-mkdocs = "^1.6.1"
-mkdocs-material = "9.7.6"
-mkdocstrings = { extras = ["python"], version = "1.0.3" }
-mypy = "1.20.0"
-pre-commit = "4.5.1"
-pytest = "9.0.2"
-ruff = "0.15.9"
+mypy = "1.20.2"
+pre-commit = "4.6.0"
+pytest = "9.0.3"
+ruff = "0.15.12"
 types-pyyaml = "^6.0.12.20250516"
 fawltydeps = "^0.20.0"
+zensical = "^0.0.39"
 
 [build-system]
 requires = ["poetry-core"]
